@@ -5,6 +5,9 @@ __pycache__/
 *.so
 .Python
 
+# Auto-generated logs
+logs/
+
 # Virtual Environment
 .venv/
 venv/
