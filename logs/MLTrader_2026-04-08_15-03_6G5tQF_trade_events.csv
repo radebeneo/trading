@@ -1,5 +1,0 @@
-time,strategy,exchange,identifier,symbol,side,type,status,price,filled_quantity,multiplier,trade_cost,trade_slippage,time_in_force,asset.right,asset.strike,asset.multiplier,asset.expiration,asset.asset_type,price_source,event_kind,event_id,cash_event_type,cash_event_amount,cash_event_currency,cash_event_description,cash_event_direction,cash_event_reason,is_external_cash_flow,cash_event_raw_type,cash_event_raw_subtype,cash_event_broker_name,cash_event_broker_event_id
-2022-01-03 09:30:00-05:00,MLTrader,,bt_1,SPY,buy,market,new,,,1,,0.0,gtc,,0.0,1,,stock,,trade,,,,,,,,,,,,
-2022-01-03 09:30:00-05:00,MLTrader,,bt_1,SPY,buy,market,fill,476.29998779296875,105.0,1,0.0,0.0,gtc,,0.0,1,,stock,,trade,,,,,,,,,,,,
-2022-01-19 08:30:00-05:00,MLTrader,,d79bb5431b884526a62eaa0ea3d922aa,SPY,sell_to_close,limit,canceled,,,1,,0.0,day,,0.0,1,,stock,,trade,,,,,,,,,,,,
-2022-01-19 08:30:00-05:00,MLTrader,,ffb487dda4a24147a22c3c95a740d0e8,SPY,sell_to_close,stop,fill,451.8580139160156,105.0,1,0.0,0.0,day,,0.0,1,,stock,,trade,,,,,,,,,,,,
