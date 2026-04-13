@@ -91,24 +91,3 @@ broker = Alpaca(ALPACA_CREDS)
 
 strategy = MLTrader(broker, parameters={"symbol": "SPY", "cash_at_risk": 0.5})
 strategy.backtest(YahooDataBacktesting, start_date, end_date, parameters={"symbol": "SPY", "cash_at_risk": 0.5})
-
-# start_date = datetime(2022, 1, 1)
-# end_date = datetime(2022, 1, 31)
-#
-# broker = Alpaca(ALPACA_CREDS)
-#
-# strategy = MLTrader(broker, parameters={"symbol": "SPY", "cash_at_risk": 0.5})
-# strategy.backtest(YahooDataBacktesting, start_date, end_date, parameters={"symbol": "SPY", "cash_at_risk": 0.5})
-#
-# # ---- TEMPORARY NEWS TEST ----
-# from alpaca.data.historical import NewsClient
-# from alpaca.data import NewsRequest
-#
-# test_client = NewsClient(os.getenv("API_KEY"), os.getenv("API_SECRET"))
-# test_req = NewsRequest(
-#     symbols="SPY",
-#     start=datetime(2022, 1, 1),
-#     end=datetime(2022, 1, 3)
-# )
-# test_resp = test_client.get_news(test_req)
-# print("TEST RESPONSE:", test_resp)
