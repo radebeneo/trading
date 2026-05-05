@@ -12,8 +12,12 @@ def estimate_sentiment(news):
     if news:
         tokens = tokenizer(news, return_tensors="pt", padding=True).to(device)
         result = model(tokens["input_ids"], attention_mask=tokens["attention_mask"])["logits"]
-        probability = result[torch.argmax(result)]
-        sentiment = labels[torch.argmax(result)]
+        # Average logits across all articles → shape (3,)
+        avg_logits = result.mean(dim=0)
+        probabilities = torch.nn.functional.softmax(avg_logits, dim=0)
+        best_idx = torch.argmax(probabilities).item()
+        sentiment = labels[best_idx]
+        probability = probabilities[best_idx].item()
         return probability, sentiment
     else:
         return 0, labels[-1]

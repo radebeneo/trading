@@ -9,6 +9,7 @@ from alpaca.data.historical import NewsClient
 from alpaca.data import NewsRequest
 from alpaca.data.models.news import News
 from timedelta import Timedelta
+from finbert_utils import estimate_sentiment
 
 import os
 from dotenv import load_dotenv
@@ -47,6 +48,12 @@ class MLTrader(Strategy):
         three_days_prior = today - Timedelta(days=3)
         return today, three_days_prior
 
+    def get_sentiment(self):
+        news = self.get_news()
+        probability, sentiment = estimate_sentiment(news)
+        return probability, sentiment
+
+
     def get_news(self) -> list[str]:
         today, three_days_prior = self.get_dates()
         print(f"Fetching news for {self.symbol} from {three_days_prior} to {today}")
@@ -71,8 +78,8 @@ class MLTrader(Strategy):
         print(f"on_trading_iteration: cash={cash}, last_price={last_price}, quantity={quantity}")
         if cash > last_price:
             if self.last_trade is None:
-                news = self.get_news()
-                print(f"NEWS FOUND: {news}")
+                probability, sentiment = self.get_sentiment()
+                print(probability, sentiment)
                 order = self.create_order(self.symbol,
                                           side="buy",
                                           order_type=Order.OrderType.MARKET,
